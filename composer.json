@@ -1,6 +1,6 @@
 {
-    "name": "Evntzr",
-    "description": "Evntzr - gerenciamento de ingressos para eventos",
+    "name": "evntzr/core",
+    "description": "Evntzr gerenciamento de ingressos para eventos",
     "homepage": "https://github.com/gustavokuklinski/evntzr",
     "type": "project",
     "license": "MIT",
