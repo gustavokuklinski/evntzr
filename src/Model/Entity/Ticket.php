@@ -12,7 +12,7 @@ use Cake\ORM\Entity;
  * @property string $description
  * @property string $lot
  */
-class Event extends Entity
+class Ticket extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
