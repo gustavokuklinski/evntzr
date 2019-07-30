@@ -48,12 +48,12 @@ class AppController extends Controller
 
         $this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'Clients',
-                'action' => 'index'
+                'controller' => 'Static',
+                'action' => 'dashboard'
             ],
             'logoutRedirect' => [
-                'controller' => 'Static',
-                'action' => 'index'
+                'controller' => 'Users',
+                'action' => 'login'
             ],
             'authenticate' => [
                 'Form' => [
@@ -72,10 +72,9 @@ class AppController extends Controller
         //$this->loadComponent('Security');
     }
 
-
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index','about']);
+        $this->Auth->allow(['index','ticket','contact']);
 
     }
 }

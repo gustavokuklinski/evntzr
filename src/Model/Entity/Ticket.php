@@ -4,17 +4,15 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Client Entity
+ * Event Entity
  *
  * @property int $id
  * @property string $name
- * @property string $email
- * @property bool $payment
- * @property string $transactionhash
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modified
+ * @property string $price
+ * @property string $description
+ * @property string $lot
  */
-class Client extends Entity
+class Event extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -27,15 +25,8 @@ class Client extends Entity
      */
     protected $_accessible = [
         'name' => true,
-        'email' => true,
-        'payment' => true,
-        'transactionhash' => true,
-        'created' => true,
-        'modified' => true,
-        'genre' => true,
-        'phone' => true,
-        'birthday' => true,
-        'document' => true,
-        'tickets_id' => true
+        'price' => true,
+        'description' => true,
+        'lot' => true
     ];
 }

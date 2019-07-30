@@ -63,7 +63,25 @@ Router::scope('/', function (RouteBuilder $routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     $routes->connect('/', ['controller' => 'Static', 'action' => 'index']);
-    $routes->connect('/sobre', ['controller' => 'Static', 'action' => 'about']);
+    $routes->connect('/ingresso', ['controller' => 'Static', 'action' => 'ticket']);
+    $routes->connect('/contato', ['controller' => 'Static', 'action' => 'contact']);
+
+
+    $routes->connect('/admin/dashboard', ['controller' => 'Static', 'action' => 'dashboard']);
+
+    $routes->connect('/admin/clientes/', ['controller' => 'Clients', 'action' => 'index']);
+    $routes->connect('/admin/clientes/:action/*', ['controller' => 'Clients']);
+
+    $routes->connect('/admin/ingressos/', ['controller' => 'Tickets', 'action' => 'index']);
+    $routes->connect('/admin/ingressos/:action/*', ['controller' => 'Tickets']);
+
+    $routes->connect('/admin/usuarios', ['controller' => 'Users', 'action' => 'index']);
+    $routes->connect('/admin/usuarios/:action/*', ['controller' => 'Users']);
+
+
+    $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+    $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */

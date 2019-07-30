@@ -13,12 +13,11 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
+                                <?php echo $this->Html->image("evntzr.png", ['style' => 'width: 50%']) ?>
                             </a>
                         </div>
                         <div class="login-form">
                           <?= $this->Form->create() ?>
-
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <?php echo $this->Form->control('email', ['class' => 'au-input au-input--full', 'label' => false, 'placeholder' => 'E-mail']); ?>

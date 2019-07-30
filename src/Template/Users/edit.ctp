@@ -6,49 +6,12 @@
 ?>
 
 <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="header-wrap">
-
-                            <div class="header-button">
-
-                                <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">Minha conta</a>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="account-dropdown__footer">
-                                                <?= $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')) ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <!-- HEADER DESKTOP-->
+<?php if($this->Session->read('Auth.User.role') === 'admin') { ?>
 
             <!-- MAIN CONTENT-->
             <!-- MAIN CONTENT-->
                         <div class="main-content">
-                          <div class="section__content section__content--p30">
-                              <div class="container-fluid">
-                                  <div class="row">
-                                      <div class="col-md-12">
-                                          <div class="overview-wrap">
-                                              <h2 class="title-1">Editar Administrador</h2>
-                                              <?= $this->Html->link(__('Ver todos'), ['action' => 'index'], array('class' => 'au-btn au-btn-icon au-btn--blue')) ?>
-                                              <?= $this->Form->postLink(__('Exluir'), ['action' => 'delete', $user->id, 'class' => 'btn btn-primary'], array('class' => 'btn btn-danger'), ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
-                                          </div>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div><br />
+
                             <div class="section__content section__content--p30">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -56,6 +19,9 @@
                                             <div class="card">
 
                                                 <div class="card-body">
+
+                                                  <h3 class="title-3 m-b-30">Editar Administrador</h3>
+
 
                                                     <?= $this->Form->create($user) ?>
 
@@ -68,12 +34,21 @@
                                                           <?php echo $this->Form->control('email', ['class' => 'form-control', 'label' => false]); ?>
                                                         </div>
                                                         <div class="form-group">
+                                                          <label for="cc-payment" class="control-label mb-1">Permissão</label>
+
+                                                          <?php echo $this->Form->control('role', ['class' => 'form-control', 'label' => false, 'options' => ['admin' => 'Administrador', 'manager' => 'Gerente']]); ?>
+
+
+                                                        </div>
+                                                        <div class="form-group">
                                                           <label for="cc-payment" class="control-label mb-1">Senha</label>
                                                           <?php echo $this->Form->control('password', ['class' => 'form-control', 'label' => false]); ?>
                                                         </div>
 
                                                         <div>
-                                                          <?= $this->Form->button(__('Atualizar'), ['class'=>'btn btn-lg btn-info btn-block']) ?>
+                                                          <?= $this->Form->button(__('Atualizar'), ['class'=>'btn btn-primary btn-sm']) ?>
+                                                          <?= $this->Form->postLink(__('Exluir'), ['action' => 'delete', $user->id], array('class' => 'btn btn-danger btn-sm'), ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+
                                                         </div>
                                                     <?= $this->Form->end() ?>
                                                 </div>
@@ -84,4 +59,19 @@
 </div>
 </div>
 </div>
+<?php } else { ?>
+<div class="main-content">
+  <div class="section__content section__content--p30">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="overview-wrap">
+                      <h2 class="title-1">Sem permissão de acesso</h2>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+</div>
+<?php } ?>
 </div>

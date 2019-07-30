@@ -62,6 +62,18 @@ class ClientsTable extends Table
             ->requirePresence('email', 'create')
             ->notEmptyString('email');
 
+        $validator
+            ->scalar('phone')
+            ->maxLength('phone', 255)
+            ->requirePresence('phone', 'create')
+            ->notEmptyString('phone');
+
+        $validator
+            ->scalar('document')
+            ->maxLength('document', 255)
+            ->requirePresence('document', 'create')
+            ->notEmptyString('document');
+
         return $validator;
     }
 

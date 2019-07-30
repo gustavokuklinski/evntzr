@@ -3,16 +3,17 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
-/**
- * Users Controller
- *
- * @property \App\Model\Table\UsersTable $Users
- *
- * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
-class UsersController extends AppController
-{
 
+
+/**
+ * Tickets Controller
+ *
+ * @property \App\Model\Table\TicketsTable $Tickets
+ *
+ * @method \App\Model\Entity\Tickets[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ */
+class TicketsController extends AppController
+{
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -22,25 +23,6 @@ class UsersController extends AppController
         $this->Auth->allow(['add', 'logout']);
         $this->Auth->deny();
     }
-
-    public function login() {
-
-      if ($this->request->is('post')) {
-            $user = $this->Auth->identify();
-            if ($user) {
-                $this->Auth->setUser($user);
-                return $this->redirect($this->Auth->redirectUrl());
-            }
-            $this->Flash->error(__('Invalid email or password, try again'));
-        }
-    }
-
-    public function logout()
-    {
-          return $this->redirect($this->Auth->logout());
-    }
-
-
     /**
      * Index method
      *
@@ -48,25 +30,25 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $users = $this->paginate($this->Users);
+        $tickets = $this->paginate($this->Tickets);
 
-        $this->set(compact('users'));
+        $this->set(compact('tickets'));
     }
 
     /**
      * View method
      *
-     * @param string|null $id User id.
+     * @param string|null $id Tickets id.
      * @return \Cake\Http\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
     {
-        $user = $this->Users->get($id, [
+        $tickets = $this->Tickets->get($id, [
             'contain' => []
         ]);
 
-        $this->set('user', $user);
+        $this->set('tickets', $tickets);
     }
 
     /**
@@ -76,58 +58,58 @@ class UsersController extends AppController
      */
     public function add()
     {
-        $user = $this->Users->newEntity();
+        $tickets = $this->Tickets->newEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+            $tickets = $this->Tickets->patchEntity($tickets, $this->request->getData());
+            if ($this->Tickets->save($tickets)) {
+                $this->Flash->success(__('The tickets has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('The tickets could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+        $this->set(compact('tickets'));
     }
 
     /**
      * Edit method
      *
-     * @param string|null $id User id.
+     * @param string|null $id Tickets id.
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function edit($id = null)
     {
-        $user = $this->Users->get($id, [
+        $tickets = $this->Tickets->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+            $tickets = $this->Tickets->patchEntity($tickets, $this->request->getData());
+            if ($this->Tickets->save($tickets)) {
+                $this->Flash->success(__('The tickets has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('The tickets could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+        $this->set(compact('tickets'));
     }
 
     /**
      * Delete method
      *
-     * @param string|null $id User id.
+     * @param string|null $id Tickets id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $user = $this->Users->get($id);
-        if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+        $tickets = $this->Tickets->get($id);
+        if ($this->Tickets->delete($tickets)) {
+            $this->Flash->success(__('The tickets has been deleted.'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The tickets could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

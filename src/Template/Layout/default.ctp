@@ -65,14 +65,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
           </ul>
         </div>
     </nav> -->
-
+<?= $this->Flash->render() ?>
     <div class="page-wrapper">
 
       <?php if($this->Session->read('Auth')) { ?>
       <?php include('menu.ctp') ?>
       <?php } ?>
 
-    <?= $this->Flash->render() ?>
+
     <?= $this->fetch('content') ?>
   </div>
 
