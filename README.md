@@ -69,3 +69,10 @@ $./migrate-db.sh
 $./server.sh
 ```
 Abra no navegador: localhost:8765
+
+#### Screenshots
+![1](https://github.com/gustavokuklinski/evntzr/raw/master/webroot/img/evntzr-img1.png)
+
+![2](https://github.com/gustavokuklinski/evntzr/raw/master/webroot/img/evntzr-img2.png)
+
+![3](https://github.com/gustavokuklinski/evntzr/raw/master/webroot/img/evntzr-img3.png)
