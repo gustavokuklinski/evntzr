@@ -7,6 +7,9 @@ O projeto nasceu como forma de estudos do Framework CakePHP e Composer para gere
 é poder permitir a implementação de venda de ingressos para eventos de pequeno porte online utilizando QRCodes como
 forma de ingresso virtual, podendo ser lido por qualquer leitor.
 
+O sistema também já integra uma pequena LandingPage, para caso o cliente não tenha uma página Web, facilitando a implementação
+para qualquer tipo de evento.
+
 #### Requerimentos
 ```
 git
@@ -14,6 +17,12 @@ composer
 php >=5.6
 mysql
 ```
+O sistema foi desenvolvido utilizando:
+* GNU/Linux Debian Stable(x64)
+* PHP 7.3
+* MariaDB 15.1 (com MySQL Workbench)
+* Composer 1.8.9
+* CakePHP 3.8
 
 #### Scripts
 Coleção de ShellScripts para apoio no desenvolvimento:
@@ -29,7 +38,12 @@ $./migrate-db.sh
 ```
 
 #### Config
+Clone o projeto para sua máquina local ou efetue o Download do ZIP em seguida siga os passos descritos abaixo:
+
 Criar o arquivo: config/app.php (renomear o: app.default.php)
+```
+$ cp config/app.default.php config/app.php
+```
 
 Configure o banco de dados:
 ```
