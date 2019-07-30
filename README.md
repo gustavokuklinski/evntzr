@@ -1,4 +1,5 @@
 # EVNTZR
+[![Build Status](https://travis-ci.org/gustavokuklinski/evntzr.svg?branch=master)](https://travis-ci.org/gustavokuklinski/evntzr)
 
 Melhore seu evento com a compra de ingressos online e erganize o checkin através de QRCodes.
 
