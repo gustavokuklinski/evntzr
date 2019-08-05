@@ -65,6 +65,24 @@ Efetue as migrações:
 $./migrate-db.sh
 ```
 
+###### Configuração dos Boletos Bancários
+Os boletos são emitidos através da Lib: OpenBoleto.
+Para configurar a emissão de acordo com o banco do cliente:
+```
+// Arquivo: src/Controller/ClientsController.php
+
+// Linha: 8
+// Configure com o banco adequado
+use OpenBoleto\Banco\Itau;
+
+// Linha: 176
+// Configure com o banco adequado seguinte as diretrizes da documentação do OpenBoleto
+$boleto = new Itau();
+```
+[Referência do OpenBoleto](https://github.com/openboleto/openboleto)
+
+ATENÇÃO: É necessário entrar em contato com o respectivo banco sobre as informações de emissão de boletos registrados.
+
 #### Executando
 ```
 $./server.sh

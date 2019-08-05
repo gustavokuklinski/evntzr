@@ -75,10 +75,13 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/admin/ingressos/', ['controller' => 'Tickets', 'action' => 'index']);
     $routes->connect('/admin/ingressos/:action/*', ['controller' => 'Tickets']);
 
-    $routes->connect('/admin/usuarios', ['controller' => 'Users', 'action' => 'index']);
-    $routes->connect('/admin/usuarios/:action/*', ['controller' => 'Users']);
+    $routes->connect('/admin/administradores', ['controller' => 'Users', 'action' => 'index']);
+    $routes->connect('/admin/administradores/:action/*', ['controller' => 'Users']);
 
+    $routes->connect('/admin/configuracoes', ['controller' => 'Settings', 'action' => 'index']);
+    $routes->connect('/admin/configuracoes/:action/*', ['controller' => 'Settings']);
 
+    $routes->connect('/admin', ['controller' => 'Users', 'action' => 'login']);
     $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
     $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
 

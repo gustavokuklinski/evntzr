@@ -24,6 +24,7 @@
                                     <?php if($this->Session->read('Auth.User.role') === 'admin') { ?>
 
                                       <?= $this->Html->link(__('+ Adicionar Administrador'), ['action' => 'add'], array('class' => 'btn btn-primary btn-sm')) ?>
+                                      <?= $this->Html->link('Configurações', array('controller' => 'settings', 'action' => 'index'), array('class' => 'btn btn-primary btn-sm')) ?>
 
                                     <?php } ?>
                                     <br /><br />

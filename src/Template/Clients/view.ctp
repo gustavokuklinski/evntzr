@@ -93,7 +93,7 @@
                           </table><br />
                           <?= $this->Html->link(__('Editar'), ['action' => 'edit', $client->id], array('class' => 'btn btn-primary btn-sm')) ?>
 
-                          <?= $this->Html->link(__('Gerar Boleto'), ['action' => 'gerarBoleto', $client->id], array('class' => 'btn btn-primary btn-sm')) ?>
+                          <?= $this->Html->link(__('Gerar Boleto'), ['action' => 'paymentSlip', $client->id], array('class' => 'btn btn-primary btn-sm')) ?>
 
 
                           <?php if($this->Session->read('Auth.User.role') === 'admin') { ?>

@@ -4,9 +4,9 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 
-use OpenBoleto\Banco\BancoDoBrasil;
+// Utiliza o OpenBoleto para gerar boleto bancário, precisa configurar o banco
+use OpenBoleto\Banco\Itau;
 use OpenBoleto\Agente;
-
 /**
  * Clients Controller
  *
@@ -134,11 +134,17 @@ class ClientsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function gerarBoleto($id = null)
+    // Gera a emissão do boleto
+    public function paymentSlip($id = null)
     {
+
       $this->loadModel('Tickets');
       $recentTickets = $this->Tickets->find('all');
       $this->set('recentTickets', $recentTickets);
+
+      $this->loadModel('Settings');
+      $recentSettings = $this->Settings->find('all');
+      $this->set('recentSettings', $recentSettings);
 
       $client = $this->Clients->get($id, [
           'contain' => []
@@ -146,16 +152,28 @@ class ClientsController extends AppController
 
       $this->set('client', $client);
 
-      $sacado = new Agente($client->name, "CPF: " . $client->document);
-      $cedente = new Agente('EVNTZR', '000.000.000-00', 'Estrada Rua, 0000', '00000-000', 'Estado', 'UF');
 
+      // pega informação dos ingressos
       foreach ($recentTickets as $tickets):
           $ticketPrice = floatval($tickets->price);
           $ticketName = $tickets->name;
       endforeach;
 
+      foreach ($recentSettings as $settings):
+          $companyName = $settings->name;
+          $companyDocument = $settings->document;
+          $companyAddress = $settings->address;
+          $companyState = $settings->state;
+          $companyRegion = $settings->region;
 
-      $boleto = new BancoDoBrasil(array(
+      endforeach;
+
+      // Boleto
+      $sacado = new Agente($client->name, "CPF: " . $client->document);
+      $cedente = new Agente($companyName, "CPF/CNPJ: <br />" . $companyDocument, $companyAddress, '00000-000', $companyState, $companyRegion);
+
+      // Configura o banco com os dados necessários
+      $boleto = new Itau(array(
           // Parâmetros obrigatórios
           'dataVencimento' => new \DateTime('2019-09-20'),
           'valor' => $ticketPrice,
@@ -163,15 +181,16 @@ class ClientsController extends AppController
           'sacado' => $sacado,
           'cedente' => $cedente,
           'agencia' => 1724, // Até 4 dígitos
-          'carteira' => 18,
-          'conta' => 10403005, // Até 8 dígitos
+          'carteira' => 112,
+          'conta' => 1040, // Até 8 dígitos
           'convenio' => 1234, // 4, 6 ou 7 dígitos
-          'descricaoDemostrativo' => array(
+          'instrucoes' => array(
+            'Pagar até o vencimento',
             'Ingresso: ' . $tickets->name,
-            'EVTZR'
+            'Gerado com: EVTZR'
           )
       ));
 
-      echo $boleto->getOutput();
+      $this->set('boleto', $boleto);
     }
 }

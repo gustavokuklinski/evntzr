@@ -4,30 +4,52 @@
  * @var \App\Model\Entity\Setting $setting
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $setting->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $setting->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Settings'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="settings form large-9 medium-8 columns content">
-    <?= $this->Form->create($setting) ?>
+<div class="page-container">
+<div class="main-content">
+
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                          <h3 class="title-3 m-b-30">Editar ingresso</h3>
+
+                          <?= $this->Form->create($setting) ?>
     <fieldset>
-        <legend><?= __('Edit Setting') ?></legend>
-        <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('document');
-            echo $this->Form->control('address');
-            echo $this->Form->control('state');
-            echo $this->Form->control('region');
-        ?>
+
+            <div class="form-group">
+              <label for="cc-payment" class="control-label mb-1">Empresa</label>
+              <?php echo $this->Form->control('name', ['class' => 'form-control', 'label' => false]); ?>
+            </div>
+            <div class="form-group">
+              <label for="cc-payment" class="control-label mb-1">CPF/CNPJ</label>
+              <?php echo $this->Form->control('document', ['class' => 'form-control', 'label' => false]); ?>
+            </div>
+            <div class="form-group">
+              <label for="cc-payment" class="control-label mb-1">Endereço</label>
+              <?php echo $this->Form->control('address', ['class' => 'form-control', 'label' => false]); ?>
+            </div>
+            <div class="form-group">
+              <label for="cc-payment" class="control-label mb-1">Estado</label>
+              <?php echo $this->Form->control('state', ['class' => 'form-control', 'label' => false]); ?>
+            </div>
+            <div class="form-group">
+              <label for="cc-payment" class="control-label mb-1">UF</label>
+              <?php echo $this->Form->control('region', ['class' => 'form-control', 'label' => false]); ?>
+            </div>
+
+
+
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Atualizar'), ['class'=>'btn btn-primary btn-sm']) ?>
     <?= $this->Form->end() ?>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
 </div>

@@ -9,14 +9,14 @@ use Cake\Validation\Validator;
 /**
  * Event Model
  *
- * @method \App\Model\Entity\Event get($primaryKey, $options = [])
- * @method \App\Model\Entity\Event newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Event[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Event|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Event saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Event patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Event[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Event findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Ticket get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Ticket newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Ticket[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Ticket|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Ticket saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Ticket patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Ticket[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Ticket findOrCreate($search, callable $callback = null, $options = [])
  */
 class TicketTable extends Table
 {
