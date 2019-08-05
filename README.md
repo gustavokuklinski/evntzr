@@ -28,6 +28,9 @@ O sistema foi desenvolvido utilizando:
 #### Scripts
 Coleção de ShellScripts para apoio no desenvolvimento:
 ```
+$ ./install-composer.sh
+# Instala o PHP Composer
+
 $ ./update.sh
 # Chama o '$ composer update' e instala as dependencias necessárias(necessário já ter o composer instalado)
 
