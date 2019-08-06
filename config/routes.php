@@ -65,7 +65,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Static', 'action' => 'index']);
     $routes->connect('/ingresso', ['controller' => 'Static', 'action' => 'ticket']);
     $routes->connect('/contato', ['controller' => 'Static', 'action' => 'contact']);
-
+    $routes->connect('/e-ticket/:transactionhash', ['controller' => 'Static', 'action' => 'eTicket']);
+    $routes->connect('/static/e-ticket/:transactionhash', ['controller' => 'Static', 'action' => 'eTicket']);
 
     $routes->connect('/admin/dashboard', ['controller' => 'Static', 'action' => 'dashboard']);
 

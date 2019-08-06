@@ -94,6 +94,7 @@
                           <?= $this->Html->link(__('Editar'), ['action' => 'edit', $client->id], array('class' => 'btn btn-primary btn-sm')) ?>
 
                           <?= $this->Html->link(__('Gerar Boleto'), ['action' => 'paymentSlip', $client->id], array('class' => 'btn btn-primary btn-sm')) ?>
+                          <?= $this->Html->link(__('Gerar e-Tickt'), ['controller' => 'Static', 'action' => 'eTicket', $client->transactionhash], array('class' => 'btn btn-primary btn-sm', 'target' => '_blank')) ?>
 
 
                           <?php if($this->Session->read('Auth.User.role') === 'admin') { ?>

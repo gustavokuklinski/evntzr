@@ -19,7 +19,7 @@ class ClientsController extends AppController
   public function beforeFilter(Event $event)
   {
      // allow all action
-      $this->Auth->allow('add');
+      $this->Auth->allow('add', 'view');
   }
 
 

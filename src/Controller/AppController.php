@@ -74,7 +74,7 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index','ticket','contact']);
+        $this->Auth->allow(['index','ticket','contact', 'eTicket']);
 
     }
 }

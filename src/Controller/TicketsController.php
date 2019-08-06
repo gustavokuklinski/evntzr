@@ -20,7 +20,7 @@ class TicketsController extends AppController
         // Allow users to register and logout.
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
-        $this->Auth->allow(['add', 'logout']);
+        $this->Auth->allow(['add', 'logout','view']);
         $this->Auth->deny();
     }
     /**

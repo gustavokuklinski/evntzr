@@ -43,11 +43,31 @@ class StaticController extends AppController
       $this->viewBuilder()->setLayout('raw');
     }
 
+    // Função do e-ticket a ser apresentado
+    public function eTicket($transactionhash = null) {
+      $id = $this->request->transactionhash;
+
+      $this->loadModel('Clients');
+      $client = $this->Clients->find()->where(['Clients.transactionhash' => $id]);
+      $this->set('client', $client);
+
+      $this->loadModel('Tickets');
+      $recentTickets = $this->Tickets->find('all');
+      $this->set('recentTickets', $recentTickets);
+
+      $this->loadModel('Settings');
+      $recentSettings = $this->Settings->find('all');
+      $this->set('recentSettings', $recentSettings);
+
+      $this->viewBuilder()->setLayout('eticket');
+    }
+
+    // Dashboard do Administrador
     public function dashboard() {
       $this->loadModel('Tickets');
       $recentTickets = $this->Tickets->find('all');
       $this->set('recentTickets', $recentTickets);
-      
+
       $this->loadModel('Clients');
       $recentClients = $this->Clients->find('all', [
           'limit' => 5,
